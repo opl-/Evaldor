@@ -23,7 +23,7 @@ commands:
     description: 'Ustawia spawn.'
     usage: '/setspawn [nazwa spawnu]'
   fly:
-    description: 'Pozwala na latanie bez tryby kreatywnego.'
+    description: 'Pozwala na latanie bez trybu kreatywnego.'
     usage: '/fly <on/off>'
   heal:
     description: 'Komenda sluzaca do leczenia siebie i innych graczy.'
@@ -32,10 +32,10 @@ commands:
     description: 'Pozwala na karmienie siebie i innych graczy.'
     usage: '/feed [gracz]'
   sethealth:
-    description: 'TODO'
+    description: 'Ustawia ilosc punktow zycia podanego gracza. /TODO'
     usage: '/sethealth [gracz] <ilosc punktow zycia>'
   sethunger:
-    description: 'TODO'
+    description: 'Ustawia ilosc punktow glodu podanego gracza. /TODO'
     usage: '/sethunger [gracz] <ilosc punktow glodu>'
   tp:
     description: Teleportuje gracza do gracza.
