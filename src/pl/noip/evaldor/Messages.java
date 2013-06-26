@@ -16,9 +16,9 @@ public class Messages {
 	public static final String playerNotFound = "§cNie znaleziono gracza §4{player}§c.";
 	
 	/** GameModes **/
-	public static final String survival = "Przetrwanie";
-	public static final String creative = "Kreatywny";
-	public static final String adventure = "Przygoda";
+	public static final String survival = "Survival";
+	public static final String creative = "Creative";
+	public static final String adventure = "Adventure";
 	public static final String[] gamemodes = new String[] {survival, creative, adventure};
 	
 	/** CommandGamemode **/
