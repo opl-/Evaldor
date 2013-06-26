@@ -35,7 +35,13 @@ public class CommandTime implements CommandExecutor {
 				w.setTime(13500L);
 				Bukkit.broadcastMessage(Messages.timeChanged.replaceAll("\\{world\\}", w.getName()).replaceAll("\\{player\\}", Evaldor.getName(sender)).replaceAll("\\{time\\}", Messages.timeOfDay[1]));
 			} else {
-				sender.sendMessage(Messages.wrongUsage + command.getUsage());
+				int time;
+				try {time = Integer.parseInt(args[0]);} catch (NumberFormatException e) {
+					sender.sendMessage(Messages.wrongUsage + command.getUsage());
+					return true;
+				}
+				// TO TUTAJ (time to czas jako int)
+				// musisz sprawdzic czy czas nie jest za maly czy za duzy
 				return true;
 			}
 			return true;
