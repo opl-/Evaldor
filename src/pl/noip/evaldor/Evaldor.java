@@ -23,6 +23,8 @@ import pl.noip.evaldor.command.CommandHeal;
 import pl.noip.evaldor.command.CommandSetHealth;
 import pl.noip.evaldor.command.CommandSetSpawn;
 import pl.noip.evaldor.command.CommandSpawn;
+import pl.noip.evaldor.command.CommandTP;
+import pl.noip.evaldor.command.CommandTPA;
 import pl.noip.evaldor.command.CommandTime;
 import pl.noip.evaldor.command.CommandWeather;
 
@@ -59,6 +61,8 @@ public final class Evaldor extends JavaPlugin {
 		getCommand("heal").setExecutor(new CommandHeal());
 		getCommand("feed").setExecutor(new CommandFeed());
 		getCommand("sethealth").setExecutor(new CommandSetHealth());
+		getCommand("tp").setExecutor(new CommandTP());
+		getCommand("tpa").setExecutor(new CommandTPA());
 //		getCommand("sethunger").setExecutor(new CommandSetHunger());
 //		getCommand("setsaturation").setExecutor(new CommandSaturation());
 
