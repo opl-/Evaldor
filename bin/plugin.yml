@@ -1,4 +1,4 @@
-main: opl.plugins.evaldor.Evaldor
+main: pl.noip.evaldor.Evaldor
 name: Evaldor
 version: 0.1
 description: Evaldor
