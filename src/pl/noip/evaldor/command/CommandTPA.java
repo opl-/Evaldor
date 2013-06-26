@@ -1,9 +1,7 @@
-package lolwut.command;
+package pl.noip.evaldor.command;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import lolwut.Command1;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -12,6 +10,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_5_R3.command.CraftConsoleCommandSender;
 import org.bukkit.entity.Player;
+
+import pl.noip.evaldor.Evaldor;
 
 public class CommandTPA implements CommandExecutor {
 
@@ -29,7 +29,6 @@ public class CommandTPA implements CommandExecutor {
 						+ "Ta komenda moze zostac wykonana tylko jako gracz.");
 			} else if (sender instanceof Player) {
 				if (args.length == 1) {
-					String senderIGN = sender.getName();
 					String sentto = args[0];
 					Player target = Bukkit.getServer().getPlayer(sentto);
 					if (target == null) {
@@ -53,7 +52,7 @@ public class CommandTPA implements CommandExecutor {
 								+ ChatColor.YELLOW + "aby zaakceptowac, albo "
 								+ ChatColor.RED + "/tpdeny" + ChatColor.YELLOW
 								+ " aby odrzucic");
-						Bukkit.getScheduler().runTaskLater(Command1.inst, new tpreqtime(target), 300);
+						Bukkit.getScheduler().runTaskLater(Evaldor.inst(), new tpreqtime(target), 300);
 					}
 				}
 			}

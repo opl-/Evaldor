@@ -1,4 +1,4 @@
-package lolwut.command;
+package pl.noip.evaldor.command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,7 +15,6 @@ public class CommandTP implements CommandExecutor {
 		if (sender instanceof CraftConsoleCommandSender) {
 			sender.sendMessage("LOL");
 		} else if (sender instanceof Player) {
-			String senderIGN = sender.getName();
 			if (args.length == 1) {
 				Player target = (Bukkit.getServer().getPlayer(args[0]));
 				if (target == null) {
