@@ -38,7 +38,7 @@ public class Messages {
 	
 	/** CommandTime **/
 	public static final String timeChanged = "§eGracz §6{player}§e zmienil czas na §6{time}§e na swiecie §6{world}§e.";
-	public static final String[] timeOfDay = new String[] {"dzien", "noc"}; 
+	public static final String[] timeOfDay = new String[] {"dzien", "noc"};
 
 	/** CommandSpawn **/
 	public static final String spawnDefaultTeleported = "§eZostales przeteleportowany na spawn.";
@@ -77,4 +77,23 @@ public class Messages {
 	/** CommandSetSaturation **/
 	public static final String setsaturationSuccess = "§2{player}§a ma teraz §2{saturation}§a punktow nasycenia.";
 	public static final String setsaturationNotFloat = "§cPunkty nasycenia musza byc liczba calkowita i wynosic od 0.0 do 5.0.";
+	
+	/** CommandTp **/
+	public static final String tpTeleportedTo = "§aPrzeteleportowano do §2{player}§a.";
+	public static final String tpTeleportedFromTo = "§aPrzeteleportowano gracza §2{player}§a do §2{player2}§a.";
+	public static final String tpSomeoneTeleportedYouTo = "§6{player}§e przeteleportowal Cie do §6{player2}§e.";
+	public static final String tpSomeoneTeleportedToYou = "§6{player}§e przeteleportowal do Ciebie §6{player2}§e.";
+	public static final String tpBothPlayersOffline = "§cZaden z podanych graczy nie jest na serwerze.";
+	
+	/** CommandTpa **/
+	public static final String tpaRequestSent = "§eProsba o teleportacje do gracza §6{player}§e zostala wyslana.";
+	public static final String tpaRequestToYou = "§eGracz §6{player}§e prosi o teleportacje do Ciebie.";
+	public static final String tpaRequestYouTo = "§eGracz §6{player}§e prosi abys sie do niego przeteleportowal.";
+	public static final String tpaAcceptOrDeny = "§eAby zakceptowac wpisz §2/tpaccept§e, lub wpisz §c/tpdeny§e aby odrzucic.";
+	public static final String tpaToTimedOut = "§eZadanie teleportacji do §6{player}§e wygaslo.";
+	public static final String tpaTimedOut = "§eZadanie teleportacji od §6{player}§e wygaslo.";
+	public static final String tpaNoRequest = "§cNie masz zadnej oczekajacej prosby o teleportacje.";
+	public static final String tpaTeleportedToYou = "§2{player}§ zostal do Ciebe przeteleportowany.";
+	public static final String tpaDenied = "§4{player}§c nie zgodzil sie na teleportacje.";
+	public static final String tpaToDenied = "§cOdrzuciles prosbe o teleport.";
 }

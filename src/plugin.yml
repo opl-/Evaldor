@@ -43,6 +43,7 @@ commands:
   tpa:
     description: 'Wysyla prosbe o teleportacje do innego gracza'
     usage: '/tpa <gracz>'
+<<<<<<< HEAD
     alias: ['tpaccept', 'tpdeny']
   say:
     description: 'Wysyla podana wiadomosc do wszystkich graczy'
@@ -52,3 +53,6 @@ commands:
     description: 'Wylacza serwer'
     usage: '/estop <wiadomosc>'
     
+=======
+    aliases: ['tpaccept', 'tpdeny']
+>>>>>>> GitHub Windows mi sie zepsuł ;(

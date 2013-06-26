@@ -1,8 +1,5 @@
 package pl.noip.evaldor;
 
-import java.lang.reflect.Method;
-
-
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -26,10 +23,6 @@ import ru.tehkode.permissions.PermissionUser;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 public class EventListener implements Listener {
-	private Method world_getHandle = null;
-    private Method nms_world_broadcastEntityEffect = null;
-    private Method firework_getHandle = null;
-
 	@EventHandler
 	public void formatPlayerChat(AsyncPlayerChatEvent event) {
 		if (Evaldor.inst().getConfig().getBoolean("chat.slow-chat")) {

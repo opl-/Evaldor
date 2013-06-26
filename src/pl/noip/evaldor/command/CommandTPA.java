@@ -1,85 +1,119 @@
 package pl.noip.evaldor.command;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_5_R3.command.CraftConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 import pl.noip.evaldor.Evaldor;
+import pl.noip.evaldor.Messages;
 
-public class CommandTPA implements CommandExecutor {
-
+public class CommandTpa implements CommandExecutor {
 	public static Map<Player, Player> tpamap;
 
-	public CommandTPA() {
+	public CommandTpa() {
 		tpamap = new HashMap<Player, Player>();
 	}
 
-	public boolean onCommand(CommandSender sender, Command command,
-			String label, String[] args) {
-		if (label.equalsIgnoreCase("tpa")) {
-			if (sender instanceof CraftConsoleCommandSender) {
-				sender.sendMessage(ChatColor.RED
-						+ "Ta komenda moze zostac wykonana tylko jako gracz.");
-			} else if (sender instanceof Player) {
-				if (args.length == 1) {
-					String sentto = args[0];
-					Player target = Bukkit.getServer().getPlayer(sentto);
-					if (target == null) {
-						sender.sendMessage(ChatColor.WHITE + "["
-								+ ChatColor.RED + "BLAD" + ChatColor.WHITE
-								+ "]" + ChatColor.YELLOW
-								+ " Podany gracz nie jest online.");
-
-					} else {
-						tpamap.put(target, (Player) sender);
-						sender.sendMessage(ChatColor.WHITE + "["
-								+ ChatColor.DARK_GREEN + "SUKCES"
-								+ ChatColor.WHITE + "]" + ChatColor.YELLOW
-								+ " Prosba o teleportacje zostala wyslana.");
-						target.sendMessage(ChatColor.WHITE + "["
-								+ ChatColor.YELLOW + "INFO" + ChatColor.WHITE
-								+ "]" + ChatColor.YELLOW + " Gracz " + sender.getName()
-								+ " prosi o teleportacje.");
-						target.sendMessage(ChatColor.YELLOW + "Wpisz "
-								+ ChatColor.GREEN + "/tpaccept "
-								+ ChatColor.YELLOW + "aby zaakceptowac, albo "
-								+ ChatColor.RED + "/tpdeny" + ChatColor.YELLOW
-								+ " aby odrzucic");
-						Bukkit.getScheduler().runTaskLater(Evaldor.inst(), new tpreqtime(target), 300);
+	public boolean onCommand(CommandSender sender, Command command, String alias, String[] args) {
+		if (!(sender instanceof Player)) {
+			sender.sendMessage(Messages.playerOnly);
+			return true;
+		}
+		if (alias.equalsIgnoreCase("tpa")) {
+			if (args.length == 1) {
+				Player target = Bukkit.getServer().getPlayer(args[0]);
+				if (target == null) {
+					sender.sendMessage(Messages.playerNotFound.replaceAll("\\{player\\}", args[0]));
+					return true;
+				} else {
+					tpamap.put(target, (Player) sender);
+					sender.sendMessage(Messages.tpaRequestSent.replaceAll("\\{player\\}", Evaldor.getName(target)));
+					target.sendMessage(Messages.tpaRequestToYou.replaceAll("\\{player\\}", Evaldor.getName(sender)));
+					target.sendMessage(Messages.tpaAcceptOrDeny);
+					Bukkit.getScheduler().runTaskLater(Evaldor.inst(), new tpreqtime(target), 300);
+					return true;
+				}
+			} else {
+				sender.sendMessage(Messages.wrongUsage + "/tpa <gracz>");
+				return true;
+			}
+		} else if (alias.equalsIgnoreCase("tpaccept")) { // doKogo, odKogo
+			if (tpamap.containsKey(sender)) {
+				Player target = tpamap.get(sender);
+				((Player) sender).teleport(target);
+				target.sendMessage(Messages.tpaTeleportedToYou.replaceAll("\\{player\\}", Evaldor.getName(sender)));
+				sender.sendMessage(Messages.tpTeleportedTo.replaceAll("\\{player\\}", Evaldor.getName(target)));
+				tpamap.remove((Player) sender);
+				return true;
+			} else if (tpamap.containsValue(sender)) {
+				Player target = null;
+				Iterator<Entry<Player, Player>> iter = tpamap.entrySet().iterator();
+				while (iter.hasNext()) {
+					Entry<Player, Player> e = iter.next();
+					if (e.getValue() == sender) {
+						target = e.getKey();
+						break;
 					}
 				}
+				iter.remove();
+				target.teleport((Player) sender);
+				target.sendMessage(Messages.tpSomeoneTeleportedToYou.replaceAll("\\{player\\}", Evaldor.getName(sender)));
+				sender.sendMessage(Messages.tpTeleportedTo.replaceAll("\\{player\\}", Evaldor.getName(target)));
+				tpamap.remove((Player) sender);
+				return true;
+			} else {
+				sender.sendMessage(Messages.tpaNoRequest);
+				return true;
 			}
-		} else if (label.equalsIgnoreCase("tpaccept")) {
-			
-			
+		} else if (alias.equalsIgnoreCase("tpdeny")) {
+			if (tpamap.containsKey(sender)) {
+				Player target = tpamap.get(sender);
+				target.sendMessage(Messages.tpaDenied.replaceAll("\\{player\\}", Evaldor.getName(sender)));
+				sender.sendMessage(Messages.tpaToDenied.replaceAll("\\{player\\}", Evaldor.getName(target)));
+				tpamap.remove((Player) sender);
+				return true;
+			} else if (tpamap.containsValue(sender)) {
+				Player target = null;
+				Iterator<Entry<Player, Player>> iter = tpamap.entrySet().iterator();
+				while (iter.hasNext()) {
+					Entry<Player, Player> e = iter.next();
+					if (e.getValue() == sender) {
+						target = e.getKey();
+						break;
+					}
+				}
+				iter.remove();
+				target.sendMessage(Messages.tpaDenied.replaceAll("\\{player\\}", Evaldor.getName(sender)));
+				sender.sendMessage(Messages.tpaToDenied.replaceAll("\\{player\\}", Evaldor.getName(target)));
+				tpamap.remove((Player) sender);
+				return true;
+			} else {
+				sender.sendMessage(Messages.tpaNoRequest);
+				return true;
+			}
+		} else {
+			sender.sendMessage("§dJak tys to zrobil?!");
+			return true;
 		}
-		return true;
 	}
-	
+
 	public class tpreqtime implements Runnable {
 		private Player key;
-		public tpreqtime(Player key) {
-			this.key = key;
-		}
+		public tpreqtime(Player key) {this.key = key;}
 		public void run() {
 			if (tpamap.containsKey(key)) {
-				key.sendMessage(ChatColor.WHITE + "["
-						+ ChatColor.YELLOW + "INFO" + ChatColor.WHITE
-						+ "]" + ChatColor.YELLOW + " Zadanie teleportacji od " + tpamap.get(key).getName() + " wygaslo.");
-				Bukkit.getServer().getPlayer(tpamap.get(key).getName()).sendMessage(ChatColor.WHITE + "["
-						+ ChatColor.YELLOW + "INFO" + ChatColor.WHITE
-						+ "]" + ChatColor.YELLOW + " Zadanie teleportacji do " + key.getName() + " wygaslo.");
+				key.sendMessage(Messages.tpaTimedOut.replaceAll("\\{player\\}", Evaldor.getName(tpamap.get(key))));
+				tpamap.get(key).sendMessage(Messages.tpaToTimedOut.replaceAll("\\{player\\}", Evaldor.getName(key)));
 				tpamap.remove(key);
 
 			}
 		}
 	}
-	
 }
