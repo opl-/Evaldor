@@ -20,9 +20,11 @@ import pl.noip.evaldor.command.CommandFeed;
 import pl.noip.evaldor.command.CommandFly;
 import pl.noip.evaldor.command.CommandGamemode;
 import pl.noip.evaldor.command.CommandHeal;
+import pl.noip.evaldor.command.CommandSay;
 import pl.noip.evaldor.command.CommandSetHealth;
 import pl.noip.evaldor.command.CommandSetSpawn;
 import pl.noip.evaldor.command.CommandSpawn;
+import pl.noip.evaldor.command.CommandStop;
 import pl.noip.evaldor.command.CommandTP;
 import pl.noip.evaldor.command.CommandTPA;
 import pl.noip.evaldor.command.CommandTime;
@@ -63,6 +65,8 @@ public final class Evaldor extends JavaPlugin {
 		getCommand("sethealth").setExecutor(new CommandSetHealth());
 		getCommand("tp").setExecutor(new CommandTP());
 		getCommand("tpa").setExecutor(new CommandTPA());
+		getCommand("say").setExecutor(new CommandSay());
+		getCommand("estop").setExecutor(new CommandStop());
 //		getCommand("sethunger").setExecutor(new CommandSetHunger());
 //		getCommand("setsaturation").setExecutor(new CommandSaturation());
 
@@ -114,10 +118,6 @@ public final class Evaldor extends JavaPlugin {
 			return ((Player) sender).getDisplayName();
 		}
 		return Messages.console;
-	}
-	
-	public FileConfiguration config() {
-		return getConfig();
 	}
 	
 	public static Evaldor inst() {

@@ -79,11 +79,11 @@ public class EventListener implements Listener {
 		Firework fw = (Firework) event.getEntity().getWorld().spawnEntity(event.getEntity().getLocation(), EntityType.FIREWORK); // rakieta sygnalowa
 		FireworkMeta fwm = fw.getFireworkMeta();
 		fwm.setPower(2);
-		fwm.addEffect(FireworkEffect.builder().trail(true).withColor(Color.RED).with(FireworkEffect.Type.BALL_LARGE).build());
+		fwm.addEffect(FireworkEffect.builder().flicker(true).trail(true).withColor(Color.RED).with(FireworkEffect.Type.BALL_LARGE).build());
 		fw.setFireworkMeta(fwm);
 		fw = (Firework) event.getEntity().getWorld().spawnEntity(event.getEntity().getLocation(), EntityType.FIREWORK); // krew
 		fwm = fw.getFireworkMeta();
-		fwm.setPower(1);
+		fwm.setPower(0);
 		fwm.addEffect(FireworkEffect.builder().trail(true).withColor(Color.RED).with(FireworkEffect.Type.STAR).build());
 		fw.setFireworkMeta(fwm);
 		for (Player p : Bukkit.getServer().getOnlinePlayers()) {

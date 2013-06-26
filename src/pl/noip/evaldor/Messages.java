@@ -1,7 +1,8 @@
 package pl.noip.evaldor;
 
 public class Messages {
-	public static final String noPermission = "§cNie masz uprawnien aby to zrobic!";
+	public static final String serverShutdown = "§3Wylaczono serwer bez powodu!";
+	public static final String noPermission = "§f[§a§lEvaldor§f] §cNie masz uprawnien aby to zrobic!";
 	public static final String wrongUsage = "§cSkladnia: §e";
 	public static final String playerOnly = "Tej komendy moze uzyc tylko gracz.";
 	public static final String consoleOnly = "§cTej komendy moze uzyc tylko konsola.";

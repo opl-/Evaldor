@@ -4,6 +4,7 @@ chat:
   slow-chat-delay: 1
   mark-nick: false
   group-specific: true
+  broadcast-format: '&f[&a&lEvaldor&f] &e{message}'
   groups:
     default: '{world} {prefix}{player}{suffix}: {message}'
 whitelist:
