@@ -1,0 +1,10 @@
+chat:
+  format: '{prefix}{player}{suffix}: {message}'
+  slow-chat: false
+  slow-chat-delay: 1
+  mark-nick: false
+  group-specific: true
+  groups:
+    default: '{world} {prefix}{player}{suffix}: {message}'
+whitelist:
+  message: '§7LOL/n§kahahhahahhah'
