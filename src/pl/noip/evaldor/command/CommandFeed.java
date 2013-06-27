@@ -13,7 +13,7 @@ public class CommandFeed implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String alias, String[] args) {
 		if (args.length == 0) {
 			if (!(sender instanceof Player)) {
-				sender.sendMessage(Messages.consoleOnly);
+				sender.sendMessage(Messages.playerOnly);
 				return true;
 			} else if (!Evaldor.hasPerm(sender, "evaldor.feed") && !Evaldor.hasPerm(sender, "evaldor.feed.others")) {
 				Evaldor.noPerm(sender);

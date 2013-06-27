@@ -1,6 +1,5 @@
 package pl.noip.evaldor.command;
 
-
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,6 +11,13 @@ import pl.noip.evaldor.Messages;
 public class CommandSetHealth implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String alias, String[] args) {
 		if (args.length == 1) {
+			if (!(sender instanceof Player)) {
+				sender.sendMessage(Messages.playerOnly);
+				return true;
+			} else if (!Evaldor.hasPerm(sender, "evaldor.sethealth") && !Evaldor.hasPerm(sender, "evaldor.sethealth.others")) {
+				Evaldor.noPerm(sender);
+				return true;
+			}
 			try {
 				int hp = Integer.parseInt(args[0]);
 				if (hp < 0 || hp > 20) {
@@ -25,6 +31,10 @@ public class CommandSetHealth implements CommandExecutor {
 			}
 			return true;
 		} else if (args.length == 2) {
+			if (!Evaldor.hasPerm(sender, "evaldor.sethealth.others")) {
+				Evaldor.noPerm(sender);
+				return true;
+			}
 			Player target = sender.getServer().getPlayer(args[0]);
 			int hp;
 			try {hp = Integer.parseInt(args[1]);} catch (NumberFormatException e) {

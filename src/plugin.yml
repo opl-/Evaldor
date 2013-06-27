@@ -37,7 +37,14 @@ commands:
     usage: ' [gracz] <ilosc punktow zycia>'
   sethunger:
     description: 'Ustawia ilosc punktow glodu podanego gracza.'
+<<<<<<< HEAD
     usage: ' [gracz] <ilosc punktow glodu>'
+=======
+    usage: '/sethunger [gracz] <ilosc punktow glodu>'
+  setsaturation:
+    description: 'Ustawia ilosc punktow nasycenia podanego gracza.'
+    usage: '/setsaturation [gracz] <ilosc punktow glodu>'
+>>>>>>> fbed0b7609addbdc5bbb1338c905f4f5f65b95e7
   tp:
     description: 'Teleportuje gracza do gracza.'
     usage: ' <gracz 1> [gracz 2]'
