@@ -6,7 +6,6 @@ import java.util.Map;
 
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -25,8 +24,8 @@ import pl.noip.evaldor.command.CommandSetHealth;
 import pl.noip.evaldor.command.CommandSetSpawn;
 import pl.noip.evaldor.command.CommandSpawn;
 import pl.noip.evaldor.command.CommandStop;
-import pl.noip.evaldor.command.CommandTP;
-import pl.noip.evaldor.command.CommandTPA;
+import pl.noip.evaldor.command.CommandTp;
+import pl.noip.evaldor.command.CommandTpa;
 import pl.noip.evaldor.command.CommandTime;
 import pl.noip.evaldor.command.CommandWeather;
 
@@ -63,8 +62,8 @@ public final class Evaldor extends JavaPlugin {
 		getCommand("heal").setExecutor(new CommandHeal());
 		getCommand("feed").setExecutor(new CommandFeed());
 		getCommand("sethealth").setExecutor(new CommandSetHealth());
-		getCommand("tp").setExecutor(new CommandTP());
-		getCommand("tpa").setExecutor(new CommandTPA());
+		getCommand("tp").setExecutor(new CommandTp());
+		getCommand("tpa").setExecutor(new CommandTpa());
 		getCommand("say").setExecutor(new CommandSay());
 		getCommand("estop").setExecutor(new CommandStop());
 //		getCommand("sethunger").setExecutor(new CommandSetHunger());
