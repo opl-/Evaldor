@@ -11,41 +11,25 @@ import pl.noip.evaldor.Messages;
 import pl.noip.evaldor.util.StringUtils;
 
 public class CommandStop implements CommandExecutor {
-
-	@Override
 	public boolean onCommand(CommandSender sender, Command command, String alias, String[] args) {
 		if (!Evaldor.hasPerm(sender, "evaldor.superadmin")) {
-			sender.sendMessage(Messages.noPermission);
+			Evaldor.noPerm(sender);
 			return true;
 		}
 		Bukkit.getServer().setWhitelist(true);
 		Player[] plr = Bukkit.getOnlinePlayers();
-		if (args.length == 0) {
-			if (plr.length == 1) {
-				Bukkit.getServer().getPlayer(plr[0].getName()).kickPlayer("§cPolaczenie utracone:" + "\n" + Messages.serverShutdown.replaceAll("/n", "\n") + "\n" + "§6Komendy /stop uzyl: " + Evaldor.getName(sender));
-				Bukkit.shutdown();
-			} else {
-			for (int i = 1; i < plr.length; i++) { Bukkit.getServer().getPlayer(plr[i].getName()).kickPlayer("§cPolaczenie utracone:" + "\n" + Messages.serverShutdown.replaceAll("/n", "\n") + "§6Komendy /stop uzyl: " + Evaldor.getName(sender) ); }	}	} else {
-			if (plr.length == 1) {
-				String msg = args[0];
-				for (int i = 1; i < args.length; i++) { msg += " " + args[i]; }
-				msg = StringUtils.colorize(msg.replaceAll("/n", "\n"));
-				Bukkit.getServer().setWhitelist(true);
-				Bukkit.getServer().getPlayer(plr[0].getName()).kickPlayer("§cPolaczenie utracone:" + "\n" + msg + "\n" + "§6Komendy /stop uzyl: " + Evaldor.getName(sender));
-				Bukkit.shutdown();
-		} else {
-			String msg = args[0];
-			for (int i = 1; i < args.length; i++) { msg += " " + args[i]; }
-			msg = StringUtils.colorize(msg.replaceAll("/n", "\n"));
-			Bukkit.getServer().setWhitelist(true);
-			for (int i = 1; i < plr.length; i++) { Bukkit.getServer().getPlayer(plr[i].getName()).kickPlayer("§cPolaczenie utracone:" + "\n" + msg + "\n" + "§6Komendy /stop uzyl: " + Evaldor.getName(sender)); }
-			Bukkit.shutdown();
-			}
-			
+		String reason = "";
+		if (args.length == 0) reason = Evaldor.inst().getString("default-shutdown-message");
+		else {
+			reason = args[0];
+			for (int i = 1; i < args.length; i++) { reason += " " + args[i]; }
 		}
-
+		reason = StringUtils.colorize(reason);
+		reason = Messages.stopMessage.replaceAll("\\{reason\\}", reason).replaceAll("/n", "\n").replaceAll("\\{player\\}", Evaldor.getName(sender));
+		for (int i = 0; i < plr.length; i++) { // Pierwszy element tablicy to 0 a nie 1 ;)
+			Bukkit.getServer().getPlayer(plr[i].getName()).kickPlayer(reason);
+		}
+		Bukkit.shutdown();
 		return true;
 	}
-	
-
 }

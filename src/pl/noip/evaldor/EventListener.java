@@ -33,11 +33,11 @@ public class EventListener implements Listener {
 			}
 		}
 		PermissionUser perm = PermissionsEx.getUser(event.getPlayer());
-		String format = Evaldor.inst().getConfig().getString("chat.format");
+		String format = Evaldor.inst().getString("chat.format");
 		if (Evaldor.inst().getConfig().getBoolean("chat.group-specific")) {
-			format = Evaldor.inst().getConfig().getString("chat.groups."+perm.getGroupsNames()[0]);
+			format = Evaldor.inst().getString("chat.groups."+perm.getGroupsNames()[0]);
 			if (format == null) {
-				format = Evaldor.inst().getConfig().getString("chat.format");
+				format = Evaldor.inst().getString("chat.format");
 			}
 		}
 		format = StringUtils.colorize(format.replaceAll("\\{player\\}", event.getPlayer().getDisplayName())
@@ -95,6 +95,6 @@ public class EventListener implements Listener {
 
 	@EventHandler(priority=EventPriority.MONITOR)
 	public void checkWhitelist(PlayerLoginEvent event) {
-		event.setKickMessage(Evaldor.inst().getConfig().getString("whitelist.message").replaceAll("/n", "\n"));
+		event.setKickMessage(Evaldor.inst().getString("whitelist.message").replaceAll("/n", "\n")); // TODO: do poprawki bo nie dziala za dobrze... :/
 	}
 }

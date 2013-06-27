@@ -1,3 +1,5 @@
+default-shutdown-message: '&3Wylaczono serwer bez powodu!'
+
 chat:
   format: '{prefix}{player}{suffix}: {message}'
   slow-chat: false

@@ -1,7 +1,6 @@
 package pl.noip.evaldor;
 
 public class Messages {
-	public static final String serverShutdown = "§3Wylaczono serwer bez powodu!";
 	public static final String noPermission = "§f[§a§lEvaldor§f] §cNie masz uprawnien aby to zrobic!";
 	public static final String wrongUsage = "§cSkladnia: §e";
 	public static final String playerOnly = "Tej komendy moze uzyc tylko gracz.";
@@ -96,4 +95,7 @@ public class Messages {
 	public static final String tpaTeleportedToYou = "§2{player}§ zostal do Ciebe przeteleportowany.";
 	public static final String tpaDenied = "§4{player}§c nie zgodzil sie na teleportacje.";
 	public static final String tpaToDenied = "§cOdrzuciles prosbe o teleport.";
+	
+	/** CommandStop **/
+	public static final String stopMessage = "§cPolaczenie utracone:\n§7{reason}\n§8Komendy /stop uzyl: {player}";
 }

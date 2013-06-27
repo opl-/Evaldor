@@ -65,7 +65,7 @@ public final class Evaldor extends JavaPlugin {
 		getCommand("tp").setExecutor(new CommandTp());
 		getCommand("tpa").setExecutor(new CommandTpa());
 		getCommand("say").setExecutor(new CommandSay());
-		getCommand("estop").setExecutor(new CommandStop());
+		getCommand("/stop").setExecutor(new CommandStop());
 //		getCommand("sethunger").setExecutor(new CommandSetHunger());
 //		getCommand("setsaturation").setExecutor(new CommandSaturation());
 
@@ -133,5 +133,14 @@ public final class Evaldor extends JavaPlugin {
 	
 	public void removePlayerSession(String name) {
 		sessions.remove(name);
+	}
+	
+	public String getString(String path) {
+		String text = getConfig().getString(path);
+		if (text == null) {
+			getLogger().warning(path + " is undefined! Please specify that value in your config.");
+			return "";
+		}
+		return text;
 	}
 }
