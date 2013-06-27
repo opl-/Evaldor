@@ -4,15 +4,10 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import pl.noip.evaldor.command.CommandEvaldor;
 import pl.noip.evaldor.command.CommandFeed;
@@ -26,11 +21,10 @@ import pl.noip.evaldor.command.CommandSetSaturation;
 import pl.noip.evaldor.command.CommandSetSpawn;
 import pl.noip.evaldor.command.CommandSpawn;
 import pl.noip.evaldor.command.CommandStop;
+import pl.noip.evaldor.command.CommandTime;
 import pl.noip.evaldor.command.CommandTp;
 import pl.noip.evaldor.command.CommandTpa;
-import pl.noip.evaldor.command.CommandTime;
 import pl.noip.evaldor.command.CommandWeather;
-
 import ru.tehkode.permissions.PermissionUser;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
@@ -78,22 +72,8 @@ public final class Evaldor extends JavaPlugin {
 			sessions.put(p.getName(), new PlayerSession());
 			p.sendMessage(Messages.reload);
 		}
-		
-		getServer().getScheduler().runTaskTimer(this, new poison(), 0, 5);
 
 		getLogger().info("Evaldor has been enabled!");
-	}
-	
-	private class poison implements Runnable {
-		public void run() {
-			ItemStack i = new ItemStack(276, 1);
-			i.addEnchantment(Enchantment.DAMAGE_ALL, 5);
-			for (Player p : getServer().getOnlinePlayers()) {
-				if (p.getInventory().contains(i)) {
-					p.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 6, 127));
-				}
-			}
-		}
 	}
 
 	public void onDisable() {
