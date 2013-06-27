@@ -54,7 +54,7 @@ public final class Evaldor extends JavaPlugin {
 		getCommand("time").setExecutor(new CommandTime());
 		getCommand("spawn").setExecutor(new CommandSpawn());
 		getCommand("setspawn").setExecutor(new CommandSetSpawn());
-		getCommand("fly").setExecutor(new CommandFly());
+		getCommand("lot").setExecutor(new CommandFly());
 		getCommand("heal").setExecutor(new CommandHeal());
 		getCommand("feed").setExecutor(new CommandFeed());
 		getCommand("sethealth").setExecutor(new CommandSetHealth());
