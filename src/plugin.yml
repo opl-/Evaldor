@@ -5,49 +5,50 @@ description: Evaldor
 commands:
   gamemode:
     description: 'Zmienia aktualny tryb gry.'
-    usage: '/gamemode [gracz] <tryb gry>'
+    usage: ' [gracz] <tryb gry>'
     aliases: ['gm']
   time:
     description: 'Pozwala na kontrole czasu.'
-    usage: '/time <day/night>'
+    usage: ' <day/night>'
   weather:
     description: 'Komenda do kontroli pogody.'
-    usage: '/weather <get/sun/storm/thunderstorm> [swiat] [czas w tickach]'
+    usage: ' <get/sun/storm/thunderstorm> [swiat] [czas w tickach]'
   evaldor:
     description: 'Glowna komenda pluginu.'
-    usage: '/evaldor <reload>'
+    usage: ' <reload>'
   spawn:
     description: 'Teleportuje na spawn.'
-    usage: '/spawn [nazwa spawnu] [gracz]'
+    usage: ' [nazwa spawnu] [gracz]'
   setspawn:
     description: 'Ustawia spawn.'
-    usage: '/setspawn [nazwa spawnu]'
-  fly:
-    description: 'Pozwala na latanie bez trybu kreatywnego.'
-    usage: '/fly <on/off>'
+    usage: ' [nazwa spawnu]'
+  lot:
+    description: 'Pozwala na latanie bez trybu Creative.'
+    usage: ' <on/off>'
+    alias: ['fly,latanie']
   heal:
     description: 'Komenda sluzaca do leczenia siebie i innych graczy.'
-    usage: '/heal [gracz]'
+    usage: ' [gracz]'
   feed:
     description: 'Pozwala na karmienie siebie i innych graczy.'
-    usage: '/feed [gracz]'
+    usage: ' [gracz]'
   sethealth:
     description: 'Ustawia ilosc punktow zycia podanego gracza.'
-    usage: '/sethealth [gracz] <ilosc punktow zycia>'
+    usage: ' [gracz] <ilosc punktow zycia>'
   sethunger:
     description: 'Ustawia ilosc punktow glodu podanego gracza.'
-    usage: '/sethunger [gracz] <ilosc punktow glodu>'
+    usage: ' [gracz] <ilosc punktow glodu>'
   tp:
     description: 'Teleportuje gracza do gracza.'
-    usage: '/tp <gracz 1> [gracz 2]'
+    usage: ' <gracz 1> [gracz 2]'
   tpa:
     description: 'Wysyla prosbe o teleportacje do innego gracza'
-    usage: '/tpa <gracz>'
+    usage: ' <gracz>'
     alias: ['tpaccept', 'tpdeny']
   say:
     description: 'Wysyla podana wiadomosc do wszystkich graczy'
-    usage: '/say <wiadomosc>'
+    usage: ' <wiadomosc>'
     alias: ['broadcast']
   /stop:
     description: 'Wylacza serwer'
-    usage: '//stop [wiadomosc]'
+    usage: ' [wiadomosc]'
