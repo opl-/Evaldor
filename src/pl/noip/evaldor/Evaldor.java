@@ -21,6 +21,8 @@ import pl.noip.evaldor.command.CommandGamemode;
 import pl.noip.evaldor.command.CommandHeal;
 import pl.noip.evaldor.command.CommandSay;
 import pl.noip.evaldor.command.CommandSetHealth;
+import pl.noip.evaldor.command.CommandSetHunger;
+import pl.noip.evaldor.command.CommandSetSaturation;
 import pl.noip.evaldor.command.CommandSetSpawn;
 import pl.noip.evaldor.command.CommandSpawn;
 import pl.noip.evaldor.command.CommandStop;
@@ -66,8 +68,8 @@ public final class Evaldor extends JavaPlugin {
 		getCommand("tpa").setExecutor(new CommandTpa());
 		getCommand("say").setExecutor(new CommandSay());
 		getCommand("/stop").setExecutor(new CommandStop());
-//		getCommand("sethunger").setExecutor(new CommandSetHunger());
-//		getCommand("setsaturation").setExecutor(new CommandSaturation());
+		getCommand("sethunger").setExecutor(new CommandSetHunger());
+		getCommand("setsaturation").setExecutor(new CommandSetSaturation());
 
 		getServer().getPluginManager().registerEvents(new EventListener(), this);
 
@@ -138,7 +140,7 @@ public final class Evaldor extends JavaPlugin {
 	public String getString(String path) {
 		String text = getConfig().getString(path);
 		if (text == null) {
-			getLogger().warning(path + " is undefined! Please specify that value in your config.");
+			getLogger().warning(path + " is undefined! Please specify that string in your config.");
 			return "";
 		}
 		return text;

@@ -12,6 +12,13 @@ import pl.noip.evaldor.Messages;
 public class CommandSetHunger implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String alias, String[] args) {
 		if (args.length == 1) {
+			if (!(sender instanceof Player)) {
+				sender.sendMessage(Messages.playerOnly);
+				return true;
+			} else if (!Evaldor.hasPerm(sender, "evaldor.sethunger") && !Evaldor.hasPerm(sender, "evaldor.sethunger.others")) {
+				Evaldor.noPerm(sender);
+				return true;
+			}
 			try {
 				int hp = Integer.parseInt(args[0]);
 				if (hp < 0 || hp > 20) {
@@ -19,16 +26,20 @@ public class CommandSetHunger implements CommandExecutor {
 					return true;
 				}
 				((Player) sender).setFoodLevel(hp);
-				sender.sendMessage(Messages.sethealthSuccess.replaceAll("\\{player\\}", Evaldor.getName(sender)).replaceAll("\\{health\\}", args[0]));
+				sender.sendMessage(Messages.sethungerSuccess.replaceAll("\\{player\\}", Evaldor.getName(sender)).replaceAll("\\{hunger\\}", args[0]));
 			} catch (NumberFormatException e) {
-				sender.sendMessage(Messages.sethealthNotInteger);
+				sender.sendMessage(Messages.sethungerNotInteger);
 			}
 			return true;
 		} else if (args.length == 2) {
+			if (!Evaldor.hasPerm(sender, "evaldor.sethunger.others")) {
+				Evaldor.noPerm(sender);
+				return true;
+			}
 			Player target = sender.getServer().getPlayer(args[0]);
 			int hp;
 			try {hp = Integer.parseInt(args[1]);} catch (NumberFormatException e) {
-				sender.sendMessage(Messages.sethealthNotInteger);
+				sender.sendMessage(Messages.sethungerNotInteger);
 				return true;
 			}
 			if (target != null) {
@@ -38,9 +49,9 @@ public class CommandSetHunger implements CommandExecutor {
 						return true;
 					}
 					target.setFoodLevel(Integer.parseInt(args[1]));
-					sender.sendMessage(Messages.sethealthSuccess.replaceAll("\\{player\\}", Evaldor.getName(target)).replaceAll("\\{health\\}", args[1]));
+					sender.sendMessage(Messages.sethungerSuccess.replaceAll("\\{player\\}", Evaldor.getName(target)).replaceAll("\\{hunger\\}", args[1]));
 				} catch (NumberFormatException e) {
-					sender.sendMessage(Messages.sethealthNotInteger);
+					sender.sendMessage(Messages.sethungerNotInteger);
 				}
 			} else {
 				target = sender.getServer().getPlayer(args[1]);
@@ -51,9 +62,9 @@ public class CommandSetHunger implements CommandExecutor {
 						return true;
 					}
 					target.setFoodLevel(hp);
-					sender.sendMessage(Messages.sethealthSuccess.replaceAll("\\{player\\}", Evaldor.getName(target)).replaceAll("\\{health\\}", args[0]));
+					sender.sendMessage(Messages.sethungerSuccess.replaceAll("\\{player\\}", Evaldor.getName(target)).replaceAll("\\{hunger\\}", args[0]));
 				} catch (NumberFormatException e) {
-					sender.sendMessage(Messages.sethealthNotInteger);
+					sender.sendMessage(Messages.sethungerNotInteger);
 				}
 			}
 			return true;

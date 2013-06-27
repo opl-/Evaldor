@@ -12,10 +12,21 @@ import pl.noip.evaldor.Messages;
 public class CommandHeal implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String alias, String[] args) {
 		if (args.length == 0) {
+			if (!(sender instanceof Player)) {
+				sender.sendMessage(Messages.playerOnly);
+				return true;
+			} else if (!Evaldor.hasPerm(sender, "evaldor.heal") && !Evaldor.hasPerm(sender, "evaldor.heal.others")) {
+				Evaldor.noPerm(sender);
+				return true;
+			}
 			((Player) sender).setHealth(20);
 			sender.sendMessage(Messages.healHealed);
 			return true;
 		} else if (args.length == 1) {
+			if (!Evaldor.hasPerm(sender, "evaldor.heal.others")) {
+				Evaldor.noPerm(sender);
+				return true;
+			}
 			Player target = sender.getServer().getPlayer(args[0]);
 			if (target != null) {
 				target.setHealth(20);
