@@ -99,7 +99,7 @@ public class CommandTpa implements CommandExecutor {
 				return true;
 			}
 		} else {
-			sender.sendMessage("§dJak tys to zrobil?!");
+			sender.sendMessage("ï¿½dJak tys to zrobil?!");
 			return true;
 		}
 	}
