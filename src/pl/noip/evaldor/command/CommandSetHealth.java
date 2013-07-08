@@ -19,7 +19,7 @@ public class CommandSetHealth implements CommandExecutor {
 				return true;
 			}
 			try {
-				int hp = Integer.parseInt(args[0]);
+				double hp = Integer.parseInt(args[0]);
 				if (hp < 0 || hp > 20) {
 					sender.sendMessage(Messages.sethealthNotInteger);
 					return true;
@@ -36,7 +36,7 @@ public class CommandSetHealth implements CommandExecutor {
 				return true;
 			}
 			Player target = sender.getServer().getPlayer(args[0]);
-			int hp;
+			double hp;
 			try {hp = Integer.parseInt(args[1]);} catch (NumberFormatException e) {
 				sender.sendMessage(Messages.sethealthNotInteger);
 				return true;
@@ -47,7 +47,7 @@ public class CommandSetHealth implements CommandExecutor {
 						sender.sendMessage(Messages.sethealthNotInteger);
 						return true;
 					}
-					target.setHealth(Integer.parseInt(args[1]));
+					target.setHealth((double) Integer.parseInt(args[1]));
 					sender.sendMessage(Messages.sethealthSuccess.replaceAll("\\{player\\}", Evaldor.getName(target)).replaceAll("\\{health\\}", args[1]));
 				} catch (NumberFormatException e) {
 					sender.sendMessage(Messages.sethealthNotInteger);

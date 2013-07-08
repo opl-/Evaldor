@@ -19,7 +19,7 @@ public class CommandHeal implements CommandExecutor {
 				Evaldor.noPerm(sender);
 				return true;
 			}
-			((Player) sender).setHealth(20);
+			((Player) sender).setHealth(20D);
 			sender.sendMessage(Messages.healHealed);
 			return true;
 		} else if (args.length == 1) {
@@ -29,7 +29,7 @@ public class CommandHeal implements CommandExecutor {
 			}
 			Player target = sender.getServer().getPlayer(args[0]);
 			if (target != null) {
-				target.setHealth(20);
+				target.setHealth(20D);
 				sender.sendMessage(Messages.healYouHealed.replaceAll("\\{player\\}", Evaldor.getName(target)));
 				target.sendMessage(Messages.healHealedByOther.replaceAll("\\{player\\}", Evaldor.getName(sender)));
 				return true;
