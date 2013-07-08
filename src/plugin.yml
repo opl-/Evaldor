@@ -68,3 +68,6 @@ commands:
   baninfo:
     description: 'Daje dostep do informacji o banie.'
     usage: ' <gracz/ip>'
+  kickall:
+    description: 'Wyrzuca wszystkich graczy online.'
+    usage: ' [powod]'
