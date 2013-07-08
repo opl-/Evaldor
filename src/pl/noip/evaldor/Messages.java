@@ -1,6 +1,8 @@
 package pl.noip.evaldor;
 
 public class Messages {
+	public static final String defaultkickmsg = "§f[§a§lEvaldor§f] \n§cZostales wyrzucony z serwera.";
+	public static final String kickedwithreason = "§f[§a§lEvaldor§f] \n §4Zostales wyrzucony z serwera. \n§3Powod: §6";
 	public static final String noPermission = "§f[§a§lEvaldor§f] §cNie masz uprawnien aby to zrobic!";
 	public static final String wrongUsage = "§cSkladnia: §e";
 	public static final String playerOnly = "Tej komendy moze uzyc tylko gracz.";

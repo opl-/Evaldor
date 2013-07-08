@@ -56,3 +56,6 @@ commands:
   /stop:
     description: 'Wylacza serwer'
     usage: ' [wiadomosc]'
+  kick:
+    description: 'Wyrzuca podanego gracza z serwera'
+    usage: ' <gracz> [powod]'

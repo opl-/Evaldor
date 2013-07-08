@@ -14,6 +14,7 @@ import pl.noip.evaldor.command.CommandFeed;
 import pl.noip.evaldor.command.CommandFly;
 import pl.noip.evaldor.command.CommandGamemode;
 import pl.noip.evaldor.command.CommandHeal;
+import pl.noip.evaldor.command.CommandKick;
 import pl.noip.evaldor.command.CommandSay;
 import pl.noip.evaldor.command.CommandSetHealth;
 import pl.noip.evaldor.command.CommandSetHunger;
@@ -62,6 +63,7 @@ public final class Evaldor extends JavaPlugin {
 		getCommand("tpa").setExecutor(new CommandTpa());
 		getCommand("say").setExecutor(new CommandSay());
 		getCommand("/stop").setExecutor(new CommandStop());
+		getCommand("kick").setExecutor(new CommandKick());
 		getCommand("sethunger").setExecutor(new CommandSetHunger());
 		getCommand("setsaturation").setExecutor(new CommandSetSaturation());
 
