@@ -101,4 +101,8 @@ public class Messages {
 	
 	/** CommandStop **/
 	public static final String stopMessage = "§cPolaczenie utracone:\n§7{reason}\n§8Komendy /stop uzyl: {player}";
+	
+	/** CommandKick **/
+	public static final String kickSuccess = "§a{player}§2 zostal wyrzucony.";
+	public static final String kickSuccessWithReason = "§a{player}§2 zostal wyrzucony z powodem §a{reason}§2.";
 }
