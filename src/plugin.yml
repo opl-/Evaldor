@@ -56,11 +56,9 @@ commands:
   /stop:
     description: 'Wylacza serwer.'
     usage: ' [wiadomosc]'
-<<<<<<< HEAD
   kick:
     description: 'Wyrzuca podanego gracza z serwera'
     usage: ' <gracz> [powod]'
-=======
   ban:
     description: 'Pozwala na banowanie graczy.'
     usage: ' <gracz> [powod]'
