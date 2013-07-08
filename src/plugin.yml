@@ -68,9 +68,6 @@ commands:
   baninfo:
     description: 'Daje dostep do informacji o banie.'
     usage: ' <gracz/ip>'
-<<<<<<< HEAD
   kickall:
     description: 'Wyrzuca wszystkich graczy online.'
     usage: ' [powod]'
-=======
->>>>>>> C:/Documents and Settings/Kuba/Ustawienia lokalne/Dane aplikacji/GitHub/PortableGit_015aa71ef18c047ce8509ffb2f9e4bb0e3e73f13/kick
