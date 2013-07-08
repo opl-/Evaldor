@@ -68,4 +68,3 @@ commands:
   baninfo:
     description: 'Daje dostep do informacji o banie.'
     usage: ' <gracz/ip>'
->>>>>>> Przygotowania do /ban
