@@ -46,16 +46,28 @@ commands:
     description: 'Teleportuje gracza do gracza.'
     usage: ' <gracz 1> [gracz 2]'
   tpa:
-    description: 'Wysyla prosbe o teleportacje do innego gracza'
+    description: 'Wysyla prosbe o teleportacje do innego gracza.'
     usage: ' <gracz>'
     alias: ['tpaccept', 'tpdeny']
   say:
-    description: 'Wysyla podana wiadomosc do wszystkich graczy'
+    description: 'Wysyla podana wiadomosc do wszystkich graczy.'
     usage: ' <wiadomosc>'
     alias: ['broadcast']
   /stop:
-    description: 'Wylacza serwer'
+    description: 'Wylacza serwer.'
     usage: ' [wiadomosc]'
+<<<<<<< HEAD
   kick:
     description: 'Wyrzuca podanego gracza z serwera'
     usage: ' <gracz> [powod]'
+=======
+  ban:
+    description: 'Pozwala na banowanie graczy.'
+    usage: ' <gracz> [powod]'
+  tempban:
+    description: 'Pozwala na tymczasowe banowanie graczy.'
+    usage: ' <gracz> <czas> [powod]'
+  baninfo:
+    description: 'Daje dostep do informacji o banie.'
+    usage: ' <gracz/ip>'
+>>>>>>> Przygotowania do /ban
